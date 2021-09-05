@@ -11,7 +11,7 @@ class Student extends Model
     protected $fillable=['name', 'birth','gender','classroom_id'];
 
     /**
-     * mapeamento com salas de aulas
+     * map. com salas de aulas 
      */
     public function classroom()
     {

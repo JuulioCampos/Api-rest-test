@@ -23,13 +23,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        $result = Student::find($id);
-
-        if(!$result) return response()->json(['message'=>'not found'], 404);
-
-        return response()->json($result, 302) ;
+        return $student;
+        // return Student::findOrFail($id);
     }
 
     /**
@@ -57,9 +54,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+
+        try {
+            $student->update($request->all());
+
+            return [];
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message'=> $e->getMessage()
+            ],500);
+        }
     }
 
     /**
@@ -68,8 +74,16 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        try {
+            $student->delete();
+
+            return [];
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message'=> $e->getMessage()
+            ],500);
+        }
     }
 }

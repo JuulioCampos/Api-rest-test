@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
@@ -37,14 +38,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            return Student::create($request->all());
-        } catch (\Throwable $e) {
-            return response()->json([
-                'message'=> $e->getMessage()
-            ],500);
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'gender' => 'required',
+            'birth' => 'required',
+            'classroom_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(),422);
         }
-        // dd($request->all());
+        return Student::create($request->all());
+
     }
 
     /**
@@ -56,16 +61,8 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-
-        try {
             $student->update($request->all());
-
             return [];
-        } catch (\Throwable $e) {
-            return response()->json([
-                'message'=> $e->getMessage()
-            ],500);
-        }
     }
 
     /**
@@ -76,14 +73,9 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        try {
-            $student->delete();
+        $student->delete();
 
-            return [];
-        } catch (\Throwable $e) {
-            return response()->json([
-                'message'=> $e->getMessage()
-            ],500);
-        }
+        return [];
+
     }
 }

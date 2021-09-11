@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -36,18 +37,9 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => 'required',
-            'gender' => 'required',
-            'birth' => 'required',
-            'classroom_id' => 'required'
-        ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(),422);
-        }
         return Student::create($request->all());
 
     }
@@ -59,7 +51,7 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentRequest $request, Student $student)
     {
             $student->update($request->all());
             return [];

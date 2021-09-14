@@ -6,6 +6,8 @@ use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Student as StudentResource;
+use App\Http\Resources\StudentCollection as StudentCollection;
 
 class StudentController extends Controller
 {
@@ -14,9 +16,13 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       return response()->json(Student::get(), 200);
+        $request->query('includes') === 'classroom' ? $student = Student::with('classroom')->paginate(2) :  $student = Student::paginate(2);
+
+       return  (new StudentCollection($student))
+                ->response()
+                ->setStatusCode(201);
     }
 
     /**
@@ -27,7 +33,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return $student;
+        if(request()->header("Accept") === "application/xml") return $this->getStudentXmlResponse($student);
+
+        return new StudentResource($student);
         // return Student::findOrFail($id);
     }
 
@@ -68,6 +76,13 @@ class StudentController extends Controller
         $student->delete();
 
         return [];
+
+    }
+    public function getStudentXmlResponse($student)
+    {
+       dd($student);
+
+
 
     }
 }

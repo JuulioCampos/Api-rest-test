@@ -15,10 +15,10 @@ class Student extends JsonResource
     public function toArray($request)
     {
         return [
-            'Código'            => (int) $this->id,
-            'nome'              => $this->name,
+            'Codigo'            => (int) $this->id,
+            'Nome'              => $this->name,
             'Nascimento'        => $this->birth,
-            'Genêro'            => $this->gender,
+            'Genero'            => $this->gender,
             'Sala'              => new CLassroom($this->whenLoaded('classroom')),
             'links'             => [
                                     [

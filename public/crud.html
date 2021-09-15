@@ -50,8 +50,7 @@
         <div id="botao_att" class="container">
             <hr />
             <button type="submit" class=' btn btn-success atualizar_lista'>Atualizar lista</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#cadastrar_aluno">Cadastrar aluno</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrar_aluno">Cadastrar aluno</button>
         </div>
 
 
@@ -67,12 +66,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                        <form id="register-form" action="" method="post">
                             <div class="form-group">
+                                <input class="form-control" type="hidden" name="Codigo" id="Codigo" >
+
                                 <label for="nome">Nome</label>
-                                <input class="form-control" type="text" name="Nome" id="" placeholder="Nome" required>
+                                <input class="form-control" type="text" name="Nome" id="Nome" placeholder="Nome" required>
                                 <label for="nome">Nascimento</label>
-                                <input class="form-control" type="text" name="Nascimento" id="" placeholder="Nascimento" required>
+                                <input class="form-control" type="text" name="Nascimento" id="Nascimento" placeholder="Nascimento" required>
                                 <label for="nome">Genero</label>
                                 <select class="form-control" name="Genero" id="Genero" placeholder="Genero" required>
                                     <option value="">Genero</option>
@@ -80,11 +81,11 @@
                                     <option value="F">Feminino</option>
                                 </select>
                                 <label  for="nome">Sala de aula</label>
-                                <input class="form-control" min='1' type="Number" name="Sala" id="" placeholder="Sala de aula" required>
+                                <input class="form-control" min='1' type="Number" name="Sala" id="Sala" placeholder="Sala de aula" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button onclick='confirm("Deseja continuar?")' type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
                         </form>
                     </div>

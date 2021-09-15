@@ -33,6 +33,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
+        $student->load('classroom');
         if(request()->header("Accept") === "application/xml") return $this->getStudentXmlResponse($student);
 
         return new StudentResource($student);

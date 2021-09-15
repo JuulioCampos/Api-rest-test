@@ -100,6 +100,9 @@ $(document).ready(function () {
             }),
             success: function () {
                 alert('Aluno criado com sucesso')
+            },
+            error: function(error){
+                console.log(error)
             }
 
         });

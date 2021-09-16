@@ -30,8 +30,8 @@
     <h1 class='text-center'>Lista de Alunos</h1>
     <div class="container">
         <div class="pesquisa pb-1">
-            <input aria-label="Search"
-            aria-describedby="search-addon" type='search' id="pesquisar" class="p-1" type="text" placeholder="Procurar aluno..">
+            <input aria-label="Search" aria-describedby="search-addon" type='search' id="pesquisar" class="p-1"
+                type="text" placeholder="Procurar aluno...">
         </div>
         <table class="table table-striped text-center">
             <thead class="table table-dark table-striped">
@@ -50,13 +50,14 @@
         <div id="botao_att" class="container">
             <hr />
             <button type="submit" class=' btn btn-success atualizar_lista'>Atualizar lista</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrar_aluno">Cadastrar aluno</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrar_aluno">Cadastrar
+                aluno</button>
         </div>
 
 
         <!-- Modal -->
-        <div class="modal fade" id="cadastrar_aluno" tabindex="-1" role="dialog"
-            aria-labelledby="cadastro_aluno" aria-hidden="true">
+        <div class="modal fade" id="cadastrar_aluno" tabindex="-1" role="dialog" aria-labelledby="cadastro_aluno"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -68,31 +69,36 @@
                     <div class="modal-body">
                         <form id="register-form" action="" method="post">
                             <div class="form-group">
-                                <input class="form-control" type="hidden" name="Codigo" id="Codigo" >
+                                <input class="form-control" type="hidden" name="Codigo" id="Codigo">
 
                                 <label for="nome">Nome</label>
-                                <input class="form-control" type="text" name="Nome" id="Nome" placeholder="Nome" required>
+                                <input class="form-control" type="text" name="Nome" id="Nome" placeholder="Nome"
+                                    required>
                                 <label for="nome">Nascimento</label>
-                                <input class="form-control" type="text" name="Nascimento" id="Nascimento" placeholder="Nascimento" required>
+                                <input class="form-control" type="text" name="Nascimento" id="Nascimento"
+                                    placeholder="Nascimento" required>
                                 <label for="nome">Genero</label>
                                 <select class="form-control" name="Genero" id="Genero" placeholder="Genero" required>
                                     <option value="">Genero</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
                                 </select>
-                                <label  for="nome">Sala de aula</label>
-                                <input class="form-control" min='1' type="Number" name="Sala" id="Sala" placeholder="Sala de aula" required>
+                                <label for="nome">Sala de aula</label>
+                                <input class="form-control" min='1' type="Number" name="Sala" id="Sala"
+                                    placeholder="Sala de aula" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                <button onclick='confirm("Deseja continuar?")' type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button onclick='confirm("Deseja continuar?")' type="submit"
+                                    class="btn btn-primary">Cadastrar</button>
                             </div>
                         </form>
                     </div>
 
                 </div>
             </div>
-        </div>
+
+
 </body>
 
 </html>
